@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="前置知识 本地 Git 链接 GitHub GitHub Actions 配置工作流（CI） Hexo 为框架的静态博客  git 链接 GitHub （ssh 方式） 参考链接：博客园  1.本地配置 输入 git 命令：  12git config --global user.name &quot;XXXX&quot;  # 用户名git config --global user.email">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2025/09/25/UN%20-%20CI%20Blog/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前置知识 本地 Git 链接 GitHub GitHub Actions 配置工作流（CI） Hexo 为框架的静态博客  git 链接 GitHub （ssh 方式） 参考链接：博客园  1.本地配置 输入 git 命令：  12git config --global user.name &quot;XXXX&quot;  # 用户名git config --global user.email">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-09-25T15:32:40.435Z">
+<meta property="article:modified_time" content="2025-09-25T15:32:40.435Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 8.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-UN - CI Blog" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/09/25/UN%20-%20CI%20Blog/" class="article-date">
+  <time class="dt-published" datetime="2025-09-25T15:32:40.435Z" itemprop="datePublished">2025-09-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h1><ul>
+<li>本地 Git 链接 GitHub</li>
+<li>GitHub Actions 配置工作流（CI）</li>
+<li>Hexo 为框架的静态博客</li>
+</ul>
+<h1 id="git-链接-GitHub-（ssh-方式）"><a href="#git-链接-GitHub-（ssh-方式）" class="headerlink" title="git 链接 GitHub （ssh 方式）"></a>git 链接 GitHub （ssh 方式）</h1><blockquote>
+<p>参考链接：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/linshengqian/p/15065553.html">博客园</a></p>
+</blockquote>
+<h2 id="1-本地配置"><a href="#1-本地配置" class="headerlink" title="1.本地配置"></a>1.本地配置</h2><ul>
+<li>输入 git 命令：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;XXXX&quot;</span>  <span class="comment"># 用户名</span></span><br><span class="line">git config --global user.email <span class="string">&quot;xxxx@xxx.com&quot;</span>  <span class="comment"># 邮箱</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建 rsa key：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+
+<p>密钥保存在 <code>~/.ssh/id_rsa.pub</code></p>
+<h2 id="2-GitHub-配置"><a href="#2-GitHub-配置" class="headerlink" title="2. GitHub 配置"></a>2. GitHub 配置</h2><ul>
+<li>打开 <a target="_blank" rel="noopener" href="https://github.com/settings/keys">GitHub 设置页面</a>，点  <code>New SSH key</code> 复制密钥，配置成功。</li>
+</ul>
+<p><em>Note：可能会遇到报错</em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Error: Host key verification failed.</span><br><span class="line">As a security precaution, SSH keeps track of which hosts it has previously seen.</span><br></pre></td></tr></table></figure>
+<p><em>参见 <a target="_blank" rel="noopener" href="https://docs.github.com/zh/authentication/troubleshooting-ssh/error-host-key-verification-failed">github docs</a></em></p>
+<ul>
+<li>添加仓库</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin <span class="string">&#x27;你的仓库 ssh 地址&#x27;</span></span><br><span class="line"><span class="comment"># Note：创建两个远程仓库，一个放源码，一个发布页面。本地仓库应链接至源码仓库。</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="配置自动推送"><a href="#配置自动推送" class="headerlink" title="配置自动推送"></a>配置自动推送</h1><h2 id="方法一-配置-hooks"><a href="#方法一-配置-hooks" class="headerlink" title="方法一 配置 hooks"></a>方法一 配置 hooks</h2><blockquote>
+<p>Git 钩子是 Git 仓库中的一些脚本文件，它们会在特定的 Git 事件发生时自动执行。例如，<code>post-receive</code> 钩子会在每次接收到推送请求时执行。</p>
+</blockquote>
+<ul>
+<li>进入 hooks 目录</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> .git/hooks</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建 post-commit 文件</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">touch</span> post-commit</span><br><span class="line"><span class="built_in">chmod</span> +x post-commit</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>编辑 post-commit 文件，添加以下内容</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+
+<h2 id="方法二-Git-别名"><a href="#方法二-Git-别名" class="headerlink" title="方法二 Git 别名"></a>方法二 Git 别名</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global alias.cmpt <span class="string">&#x27;!f() &#123; git commit -m &quot;$1&quot; &amp;&amp; git push; &#125;; f&#x27;</span></span><br><span class="line"></span><br><span class="line">git cmpt <span class="string">&#x27;commit info&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="配置-Hexo"><a href="#配置-Hexo" class="headerlink" title="配置 Hexo"></a>配置 Hexo</h1><blockquote>
+<p>可参见：<a target="_blank" rel="noopener" href="https://tech.yemengstar.com/hexo-tutorial-deploy-githubpages-beginner/">夜梦的博客</a></p>
+</blockquote>
+<h1 id="配置-GitHub-Actions"><a href="#配置-GitHub-Actions" class="headerlink" title="配置 GitHub Actions"></a>配置 GitHub Actions</h1><h2 id="加-keys"><a href="#加-keys" class="headerlink" title="加 keys"></a>加 keys</h2><ul>
+<li>创建 deploy key</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -f ~/.ssh/hexo_deploy_key -C <span class="string">&quot;your_email@example.com&quot;</span></span><br><span class="line"><span class="comment"># Note： rsa 可更改为 ed25519（椭圆曲线） 前面创建 ssh 密钥同理。</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>加 deploy key<br>  在 <strong>发布仓库</strong> 的设置页面：<a target="_blank" rel="noopener" href="https://github.com/username/username.github.io/settings/keys/new">https://github.com/<em>YourUsername</em>&#x2F;<em>username</em>.github.io&#x2F;settings&#x2F;keys&#x2F;new</a></p>
+<p>  <strong>记得勾选 <code>Allow write access</code> ！</strong></p>
+</li>
+<li><p>配置 <strong>源码仓库</strong></p>
+<ol>
+<li>进入 <strong>源码仓库</strong> 的 Settings → Secrets and variables → Actions → New repository secret。</li>
+<li>添加私钥：Name：<code>HEXO_DEPLOY_KEY</code> ； Secret：粘贴 <strong>私钥</strong> !</li>
+<li>配置 GitHub Actions ：使用了 <a target="_blank" rel="noopener" href="https://github.com/marketplace/actions/hexo-action">这个配置</a></li>
+</ol>
+</li>
+</ul>
+<p>大功告成！</p>
+<h1 id="验证-CI-流程"><a href="#验证-CI-流程" class="headerlink" title="验证 CI 流程"></a>验证 CI 流程</h1><p>本地修改 Hexo 源文件（如新增一篇文章 <code>_posts/test.md</code>），推送到源码仓库：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git cmpt -m <span class="string">&quot;Add test article&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/09/25/UN%20-%20CI%20Blog/" data-id="cuidpwSuQ7foAWxBaPX51O5iy" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2025/09/25/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">September 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/09/25/UN%20-%20CI%20Blog/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2025/09/25/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
